@@ -9,23 +9,45 @@ int* read_gruppi(const char* filename, size_t* ngruppi) {
 	}
 
 	
-	int elem = 0;
-	int i = 0;
+	char elem[100] ;
+	int nelem = 1;
 	int counter = 0;
-	while (counter != 2) {
-		char valread;
+	char rh = 0;
 
-		fgets()
-		if (valread != '\n') {
-			counter = 0;
+	while (fgets(elem, sizeof(elem), f) != NULL) {
+		char* endptr;
+		int val = strtol(elem, &endptr, 10);
+		if (val == 0) {
+			nelem++;
 		}
-		if (valread == '\n') {
-			counter++;
-		}
-		i++;
-		elem++;
-		
+	
 	}
 
+	rewind(f);
+
+	int i = 0;
+	int* ris = malloc(nelem * sizeof(int));
+	*ngruppi = nelem;
+	
+	while (fgets(elem, sizeof(elem), f) != NULL) {
+		char* endptr;
+		int val = strtol(elem, &endptr, 10);
+		if (val != 0) {
+			counter += val;
+		}
+		else {
+			ris[i] = counter;
+			counter = 0;
+			i++;
+		}
+
+
+	}
+
+	if (counter != 0) {
+		ris[i] = counter;
+	}
+
+	fclose(f);
 
 }
