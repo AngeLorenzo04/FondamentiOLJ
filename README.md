@@ -15,5 +15,5 @@ This repository contains **past exam solutions** for the **Fondamenti di informa
    ```bash
    git clone https://github.com/your-username/fondamenti-informatica.git
 2. ***Run the code**
-   ```VS
+   VS
      open the folder of the target problem on visual studio and debug
